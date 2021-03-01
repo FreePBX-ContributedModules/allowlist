@@ -1,0 +1,26 @@
+<module>
+	<rawname>allowlist</rawname>
+	<repo>unsupported</repo>
+	<name>Allow List</name>
+	<version>15.0.1</version>
+	<publisher>Sangoma Technologies Corporation</publisher>
+	<license>GPLv3+</license>
+	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
+	<category>Admin</category>
+	<description>
+		This module is used to manage a system wide list of allowlisted callers.
+	</description>
+	<changelog>
+		*15.0.1* Initial 
+	</changelog>
+	<depends>
+	</depends>
+	<menuitems>
+		<allowlist needsenginedb="yes">Allowlist</allowlist>
+	</menuitems>
+ 	<supported>
+ 		<version>15.0</version>
+ 	</supported>
+	<database>
+	</database>
+</module>
