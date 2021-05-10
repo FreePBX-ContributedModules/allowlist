@@ -13,7 +13,16 @@
 	<changelog>
 		*15.0.1* Initial 
 	</changelog>
+	<hooks>
+		<bulkhandler class="Bulkhandler" namespace="FreePBX\modules">
+			<method callingMethod="getHeaders" class="Allowlist" namespace="FreePBX\modules">bulkhandlerGetHeaders</method>
+			<method callingMethod="getTypes" class="Allowlist" namespace="FreePBX\modules">bulkhandlerGetTypes</method>
+			<method callingMethod="import" class="Allowlist" namespace="FreePBX\modules">bulkhandlerImport</method>
+			<method callingMethod="export" class="Allowlist" namespace="FreePBX\modules">bulkhandlerExport</method>
+		</bulkhandler>
+	</hooks>
 	<depends>
+		<module>core ge 15.0.12</module>
 	</depends>
 	<menuitems>
 		<allowlist needsenginedb="yes">Allowlist</allowlist>
@@ -21,6 +30,11 @@
  	<supported>
  		<version>15.0</version>
  	</supported>
+        <console>
+                <command>
+                        <name>allowlist</name>
+                </command>
+        </console>
 	<database>
 	</database>
 </module>
