@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-10 05:10+0000\n"
+"POT-Creation-Date: 2021-09-20 06:29+0000\n"
 "PO-Revision-Date: 2018-02-16 19:35+0200\n"
 "Last-Translator: Nils <Nils@heckenkamp.info>\n"
 "Language-Team: German <http://weblate.freepbx.org/projects/freepbx/allowlist/"
@@ -63,7 +63,7 @@ msgstr ""
 msgid "Admin"
 msgstr "Administrator"
 
-#: views/general.php:83
+#: views/general.php:56
 msgid "Allow Asterisk Phonebook and Contact Manager Callers"
 msgstr ""
 
@@ -83,7 +83,7 @@ msgstr ""
 msgid "Allow the last caller"
 msgstr ""
 
-#: Allowlist.class.php:27 Allowlist.class.php:691 allowlist.i18n.php:10
+#: Allowlist.class.php:27 Allowlist.class.php:645 allowlist.i18n.php:10
 #: views/general.php:24
 msgid "Allowlist"
 msgstr "Sperrliste"
@@ -100,21 +100,17 @@ msgstr "Sperrliste"
 msgid "Are you sure you want to delete this item?"
 msgstr "Sind Sie sicher, diesen Inhalt wirklich zu löschen?"
 
-#: Console/Allowlist.class.php:103 Console/Allowlist.class.php:118
-#: Console/Allowlist.class.php:298
+#: Console/Allowlist.class.php:102 Console/Allowlist.class.php:117
+#: Console/Allowlist.class.php:283
 msgid "Auto"
 msgstr ""
-
-#: views/general.php:56
-msgid "Block Unknown/Blocked Caller ID"
-msgstr "Unbekannte/Blockierte AnruferID blockieren"
 
 #: views/general.php:46
 msgid "Bulk Handler"
 msgstr "Bulk-Handler"
 
-#: Console/Allowlist.class.php:130 Console/Allowlist.class.php:145
-#: Console/Allowlist.class.php:288
+#: Console/Allowlist.class.php:129 Console/Allowlist.class.php:144
+#: Console/Allowlist.class.php:273
 msgid "CID"
 msgstr ""
 
@@ -126,41 +122,33 @@ msgstr "Anruf Datum/Uhrzeit"
 msgid "Call Log"
 msgstr "Anrufliste"
 
-#: views/general.php:98
+#: views/general.php:71
 msgid ""
 "Check here to allow all callers in Asterisk Phonebook or Contact Manager"
 msgstr ""
 
-#: views/general.php:71
-msgid "Check here to catch Unknown/Blocked Caller ID"
-msgstr "Sperrliste für Unbekannte/Blockierte AnruferID aktivieren/deaktivieren"
-
-#: Console/Allowlist.class.php:130 Console/Allowlist.class.php:145
-#: Console/Allowlist.class.php:288
+#: Console/Allowlist.class.php:129 Console/Allowlist.class.php:144
+#: Console/Allowlist.class.php:273
 msgid "Checked"
 msgstr ""
 
-#: Console/Allowlist.class.php:132
+#: Console/Allowlist.class.php:131
 msgid "Choose a DID/CID to enable/disable"
 msgstr ""
 
-#: Console/Allowlist.class.php:194
+#: Console/Allowlist.class.php:183
 msgid "Choose a Destination"
 msgstr ""
 
-#: Console/Allowlist.class.php:175
+#: Console/Allowlist.class.php:164
 msgid "Choose a Module for Destinations"
 msgstr ""
 
-#: Console/Allowlist.class.php:151
-msgid "Choose a setting to enable/disable"
-msgstr ""
-
-#: Console/Allowlist.class.php:105
+#: Console/Allowlist.class.php:104
 msgid "Choose an Outbound Route to enable/disable"
 msgstr ""
 
-#: views/general.php:122
+#: views/general.php:95
 msgid "Choose where non allowlisted calls go"
 msgstr "Wähle was mit Anrufern der Sperrliste passieren soll"
 
@@ -178,17 +166,17 @@ msgid ""
 "Allowlist."
 msgstr ""
 
-#: Allowlist.class.php:217
+#: Allowlist.class.php:215
 msgid "Could not find file after upload"
 msgstr "Konnte die Datei nach dem Hochladen nicht finden"
 
-#: Console/Allowlist.class.php:69
+#: Console/Allowlist.class.php:68
 #, php-format
 msgid "Could not write to %s"
 msgstr ""
 
-#: Console/Allowlist.class.php:130 Console/Allowlist.class.php:145
-#: Console/Allowlist.class.php:288
+#: Console/Allowlist.class.php:129 Console/Allowlist.class.php:144
+#: Console/Allowlist.class.php:273
 msgid "DID"
 msgstr ""
 
@@ -200,22 +188,22 @@ msgstr "Auswahl löschen"
 msgid "Delete a number from the allow list"
 msgstr ""
 
-#: Allowlist.class.php:709 Console/Allowlist.class.php:130
-#: Console/Allowlist.class.php:145 Console/Allowlist.class.php:288
+#: Allowlist.class.php:663 Console/Allowlist.class.php:129
+#: Console/Allowlist.class.php:144 Console/Allowlist.class.php:273
 #: views/addnumber.php:40 views/algrid.php:10
 msgid "Description"
 msgstr "Beschreibung"
 
-#: Allowlist.class.php:710
+#: Allowlist.class.php:664
 msgid "Description of number allowlisted"
 msgstr "Beschreibung der Nummer auf der Sperrliste"
 
-#: Console/Allowlist.class.php:130 Console/Allowlist.class.php:145
-#: Console/Allowlist.class.php:192 Console/Allowlist.class.php:288
+#: Console/Allowlist.class.php:129 Console/Allowlist.class.php:144
+#: Console/Allowlist.class.php:181 Console/Allowlist.class.php:273
 msgid "Destination"
 msgstr ""
 
-#: views/general.php:110
+#: views/general.php:83
 msgid "Destination for Non AllowListed Calls"
 msgstr "Ziel für Anrufer der Sperrliste"
 
@@ -223,16 +211,12 @@ msgstr "Ziel für Anrufer der Sperrliste"
 msgid "Destination for non-allowlisted callers"
 msgstr ""
 
-#: Console/Allowlist.class.php:32
-msgid "Disable options for allow list processing"
-msgstr ""
-
-#: Console/Allowlist.class.php:137
+#: Console/Allowlist.class.php:136
 #, php-format
 msgid "Disabling DID %s"
 msgstr ""
 
-#: Console/Allowlist.class.php:110
+#: Console/Allowlist.class.php:109
 #, php-format
 msgid "Disabling Outbound Route %s"
 msgstr ""
@@ -241,12 +225,12 @@ msgstr ""
 msgid "Enable Allowlist Screening"
 msgstr ""
 
-#: Console/Allowlist.class.php:140
+#: Console/Allowlist.class.php:139
 #, php-format
 msgid "Enabling DID %s"
 msgstr ""
 
-#: Console/Allowlist.class.php:113
+#: Console/Allowlist.class.php:112
 #, php-format
 msgid "Enabling Outbound Route %s"
 msgstr ""
@@ -255,15 +239,15 @@ msgstr ""
 msgid "Entry Updated"
 msgstr "Eintrag aktualisiert"
 
-#: Console/Allowlist.class.php:37
+#: Console/Allowlist.class.php:36
 msgid "Export settings to file"
 msgstr ""
 
-#: Console/Allowlist.class.php:44
+#: Console/Allowlist.class.php:43
 msgid "ID"
 msgstr ""
 
-#: Console/Allowlist.class.php:36
+#: Console/Allowlist.class.php:35
 msgid "Import settings from file"
 msgstr ""
 
@@ -271,30 +255,29 @@ msgstr ""
 msgid "Import/Export"
 msgstr "Importieren/Exportieren"
 
-#: Allowlist.class.php:692
+#: Allowlist.class.php:646
 msgid "Import/Export Caller Allowlist"
 msgstr "Sperrliste Importieren/Exportieren"
 
-#: Console/Allowlist.class.php:33
+#: Console/Allowlist.class.php:32
 msgid "List all allowlist entries"
 msgstr ""
 
-#: Console/Allowlist.class.php:173
+#: Console/Allowlist.class.php:162
 msgid "Module"
 msgstr ""
 
-#: Console/Allowlist.class.php:44 Console/Allowlist.class.php:103
-#: Console/Allowlist.class.php:118 Console/Allowlist.class.php:192
-#: Console/Allowlist.class.php:298
+#: Console/Allowlist.class.php:43 Console/Allowlist.class.php:102
+#: Console/Allowlist.class.php:117 Console/Allowlist.class.php:181
+#: Console/Allowlist.class.php:283
 msgid "Name"
 msgstr ""
 
 #: functions.inc.php:33 functions.inc.php:67 views/general.php:63
-#: views/general.php:90
 msgid "No"
 msgstr "Nein"
 
-#: Allowlist.class.php:245
+#: Allowlist.class.php:243
 msgid "No Entries to export"
 msgstr "Keine Einträge zum Exportieren"
 
@@ -314,15 +297,15 @@ msgstr "Nummer/AnruferID darf nicht leer sein"
 msgid "Numbers Deleted"
 msgstr "Nummern gelöscht"
 
-#: Console/Allowlist.class.php:256 Console/Allowlist.class.php:273
+#: Console/Allowlist.class.php:245 Console/Allowlist.class.php:258
 msgid "Option"
 msgstr ""
 
-#: Allowlist.class.php:704
+#: Allowlist.class.php:658
 msgid "Phone Number"
 msgstr "Telefonnummer"
 
-#: Allowlist.class.php:736
+#: Allowlist.class.php:690
 msgid "Phone Number Required"
 msgstr "Telefonnummer erforderlich"
 
@@ -334,7 +317,7 @@ msgstr "Nummer von der Sperrliste entfernen"
 msgid "Removes a number from the Allowlist Module"
 msgstr "Nummer von der Sperrliste entfernen"
 
-#: Allowlist.class.php:467
+#: Allowlist.class.php:460
 msgid "Reset"
 msgstr "Zurücksetzen"
 
@@ -346,11 +329,11 @@ msgstr "Änderung speichern"
 msgid "Save changes"
 msgstr "Änderungen speichern"
 
-#: Console/Allowlist.class.php:34
+#: Console/Allowlist.class.php:33
 msgid "Set whether allowlist is processed for inbound did"
 msgstr ""
 
-#: Console/Allowlist.class.php:35
+#: Console/Allowlist.class.php:34
 msgid "Set whether autoadd to the allowlist is processed for outbound route"
 msgstr ""
 
@@ -358,23 +341,23 @@ msgstr ""
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: Allowlist.class.php:473
+#: Allowlist.class.php:466
 msgid "Submit"
 msgstr "Bestätigen"
 
-#: Allowlist.class.php:213
+#: Allowlist.class.php:211
 msgid "Sucessfully imported all entries"
 msgstr "Alle Einträge erfolgreich importiert"
 
-#: Allowlist.class.php:222
+#: Allowlist.class.php:220
 msgid "The file must be in CSV format!"
 msgstr "Die Datei muss im CSV Format sein!"
 
-#: Allowlist.class.php:705
+#: Allowlist.class.php:659
 msgid "The number as it appears in the callerid display"
 msgstr "Die Nummer erscheint in der AnruferID Anzeige"
 
-#: Allowlist.class.php:187
+#: Allowlist.class.php:186
 msgid "There was an error uploading the file"
 msgstr "Beim Hochladen der Datei ist ein Fehler auftgetreten"
 
@@ -387,14 +370,20 @@ msgid ""
 "This module is used to manage a system wide list of allowlisted callers."
 msgstr ""
 
-#: Console/Allowlist.class.php:256 Console/Allowlist.class.php:273
+#: Console/Allowlist.class.php:245 Console/Allowlist.class.php:258
 msgid "Value"
 msgstr ""
 
 #: functions.inc.php:31 functions.inc.php:65 views/general.php:61
-#: views/general.php:88
 msgid "Yes"
 msgstr "Ja"
+
+#~ msgid "Block Unknown/Blocked Caller ID"
+#~ msgstr "Unbekannte/Blockierte AnruferID blockieren"
+
+#~ msgid "Check here to catch Unknown/Blocked Caller ID"
+#~ msgstr ""
+#~ "Sperrliste für Unbekannte/Blockierte AnruferID aktivieren/deaktivieren"
 
 #~ msgid "Allowlist a number"
 #~ msgstr "Eine Nummer hinzufügen"
