@@ -4,13 +4,14 @@ use FreePBX\modules\Backup as Base;
 class Restore Extends Base\RestoreBase{
 	public function runRestore(){
 		$configs = $this->getConfigs();
-		foreach($configs['data'] as $item){
-			if(empty($item['number'])){
-				continue;
-			}
-			$this->deleteOldData();
-			$this->FreePBX->Allowlist->numberAdd($item);
-		}
+		$this->deleteOldData();
+//		foreach($configs['data'] as $item){
+//			if(empty($item['number'])){
+//				continue;
+//			}
+//			$this->FreePBX->Allowlist->numberAdd($item);
+//		}
+		$this->importAstDB($configs['data']);
 		$this->importFeatureCodes($configs['features']);
 	}
 	public function processLegacy($pdo, $data, $tables, $unknownTables){
