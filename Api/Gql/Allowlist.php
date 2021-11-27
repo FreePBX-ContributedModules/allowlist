@@ -16,7 +16,7 @@ class Allowlist extends Base {
 				return [
 					'addAllowlist' => Relay::mutationWithClientMutationId([
 						'name' => 'addAllowlist',
-						'description' => 'Add a new number to the allowlist',
+						'description' => _('Add a new number to the allowlist'),
 						'inputFields' => [
 							'number' => [
 								'type' => Type::nonNull(Type::string())
@@ -42,7 +42,7 @@ class Allowlist extends Base {
 					]),
 					'removeAllowlist' => Relay::mutationWithClientMutationId([
 						'name' => 'removeAllowlist',
-						'description' => 'Remove a number from the allowlist',
+						'description' => _('Remove a number from the allowlist'),
 						'inputFields' => [
 							'number' => [
 								'type' => Type::nonNull(Type::string())
@@ -72,7 +72,7 @@ class Allowlist extends Base {
 				return [
 					'allAllowlists' => [
 						'type' => $this->typeContainer->get('allowlist')->getConnectionType(),
-						'description' => 'Used to manage a system wide list of allowed callers',
+						'description' => _('Used to manage a system wide list of allowed callers'),
 						'args' => Relay::connectionArgs(),
 						'resolve' => function($root, $args) {
 							return Relay::connectionFromArray($this->freepbx->Allowlist->getAllowlist(), $args);
@@ -83,7 +83,7 @@ class Allowlist extends Base {
 						'args' => [
 							'id' => [
 								'type' => Type::id(),
-								'description' => 'The ID',
+								'description' => _('The ID'),
 							]
 						],
 						'resolve' => function($root, $args) {
@@ -94,7 +94,7 @@ class Allowlist extends Base {
 					],
 					'allowlistSettings' => [
 						'type' => $this->typeContainer->get('allowlistsettings')->getObject(),
-						'description' => 'Allowlist Settings',
+						'description' => _('Allowlist Settings'),
 						'resolve' => function($root, $args) {
 							return []; //trick the resolver into not thinking this is null
 						}
@@ -106,19 +106,19 @@ class Allowlist extends Base {
 
 	public function initializeTypes() {
 		$user = $this->typeContainer->create('allowlistsettings','object');
-		$user->setDescription('Allowlist Settings');
+		$user->setDescription(_('Allowlist Settings'));
 		$user->addFieldCallback(function() {
 			return [
 				'pauseAllowlist' => [
 					'type' => Type::boolean(),
-					'description' => 'Pause or unpause allowlist processing globally',
+					'description' => _('Pause or unpause allowlist processing globally'),
 					'resolve' => function ($root, $args) {
 						return $this->freepbx->Allowlist->pauseGet() == 1 ? true : false;
 					}
 				],
 				'destinationConnection' => [
 					'type' => $this->typeContainer->get('destination')->getObject(),
-					'description' => 'Destination for non allowlisted calls',
+					'description' => _('Destination for non allowlisted calls'),
 					'resolve' => function($root, $args) {
 						return $this->typeContainer->get('destination')->resolveValue($this->freepbx->Allowlist->destinationGet());
 					}
@@ -127,7 +127,7 @@ class Allowlist extends Base {
 		});
 
 		$user = $this->typeContainer->create('allowlist');
-		$user->setDescription('Used to manage a system wide list of allowed callers');
+		$user->setDescription(_('Used to manage a system wide list of allowed callers'));
 
 		$user->addInterfaceCallback(function() {
 			return [$this->getNodeDefinition()['nodeInterface']];
@@ -146,11 +146,11 @@ class Allowlist extends Base {
 				}),
 				'number' => [
 					'type' => Type::string(),
-					'description' => 'The number to allow'
+					'description' => _('The number to allow')
 				],
 				'description' => [
 					'type' => Type::string(),
-					'description' => 'Description of the allowed number'
+					'description' => _('Description of the allowed number')
 				]
 			];
 		});

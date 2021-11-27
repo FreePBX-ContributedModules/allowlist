@@ -1,4 +1,4 @@
-<?php
+	<?php
 //Namespace should be FreePBX\Console\Command
 namespace FreePBX\Console\Command;
 
@@ -75,9 +75,9 @@ class Allowlist extends Command {
 			$handle = fopen($filename, 'r+b');
  			while (($data = fgetcsv($handle)) !== false) {
 				if ($allowlist->numberAdd(array( "number" => $data[0], "description" => $data[1]))) {
-					$output->writeln("<question>added number: ". $data[0] ."</question>");
+					$output->writeln(sprintf(_("<question>added number: %s</question>"), $data[0]));
 				} else {
-					$output->writeln("<error>could not add number: ". $data[0] ."</error>");
+					$output->writeln(sprintf(_("<error>could not add number: %s</error>"), $data[0]));
 				}
 			}
 			fclose($handle);
@@ -87,9 +87,9 @@ class Allowlist extends Command {
 			$io = new SymfonyStyle($input, $output);
 			$description = $io->ask('description for the number');
 			if ($allowlist->numberAdd(array( "number" => $number, "description" => $description))) {
-				$output->writeln("<question>added number: ". $number ."</question>");
+				$output->writeln(sprintf(_("<question>added number: %s</question>"), $number));
 			} else {
-				$output->writeln("<error>could not add number: ". $number ."</error>");
+				$output->writeln(sprintf(_("<error>could not add number: %s</error>"), $number));
 			}
 		}
 		if($input->getOption('route')) {
@@ -100,7 +100,7 @@ class Allowlist extends Command {
 			}
 
 			$table = new Table($output);
-			$table->setHeaders(array('ID',_('Name'),_('Auto')));
+			$table->setHeaders(array(_('ID'),_('Name'),_('Auto')));
 			$table->setRows($routes);
 			$output->writeln(_('Choose an Outbound Route to enable/disable'));
 			$helper = $this->getHelper('question');
@@ -115,7 +115,7 @@ class Allowlist extends Command {
 			}
 			$routes = $this->listOutgoingRoutes($allowlist);
 			$table = new Table($output);
-			$table->setHeaders(array('ID',_('Name'),_('Auto')));
+			$table->setHeaders(array(_('ID'),_('Name'),_('Auto')));
 			$table->setRows($routes);
 			$table->render();
 		}
@@ -127,7 +127,7 @@ class Allowlist extends Command {
 			}
 
 			$table = new Table($output);
-			$table->setHeaders(array('ID',_('DID'),_('CID'),_('Destination'), _('Description'),_('Checked')));
+			$table->setHeaders(array(_('ID'),_('DID'),_('CID'),_('Destination'), _('Description'),_('Checked')));
 			$table->setRows($routes);
 			$output->writeln(_('Choose a DID/CID to enable/disable'));
 			$helper = $this->getHelper('question');
@@ -142,7 +142,7 @@ class Allowlist extends Command {
 			}
 			$routes = $this->listIncomingRoutes($allowlist);
 			$table = new Table($output);
-			$table->setHeaders(array('ID',_('DID'),_('CID'),_('Destination'), _('Description'),_('Checked')));
+			$table->setHeaders(array(_('ID'),_('DID'),_('CID'),_('Destination'), _('Description'),_('Checked')));
 			$table->setRows($routes);
 			$table->render();
 		}
@@ -154,7 +154,7 @@ class Allowlist extends Command {
 			$question = new ChoiceQuestion($this->displaySettings($allowlist, $output)->render(),$optionids,-1);
 			$id = $helper->ask($input, $output, $question); // $id is one based so that zero appears as invalid answer (0 = carriage return)
 			$this->toggleOptions($allowlist,$id);
-			$output->writeln("<question>toggling setting option: ". $id ."</question>");
+			$output->writeln(sprintf(_("<question>toggling setting option: %s</question>"), $id));
 			$this->displaySettings($allowlist, $output)->render();;
 		}
 
@@ -172,7 +172,7 @@ class Allowlist extends Command {
 				$count++;
 			}
 			$table = new Table($output);
-			$table->setHeaders(array('ID',_('Module')));
+			$table->setHeaders(array(_('ID'),_('Module')));
 			$table->setRows($modnames);
 			$output->writeln(_('Choose a Module for Destinations'));
 			$helper = $this->getHelper('question');
@@ -191,16 +191,16 @@ class Allowlist extends Command {
 					$count++;
 				}
 				$table = new Table($output);
-				$table->setHeaders(array('ID',_('Name'),_('Destination')));
+				$table->setHeaders(array(_('ID'),_('Name'),_('Destination')));
 				$table->setRows($destnames);
 				$output->writeln(_('Choose a Destination'));
 				$helper = $this->getHelper('question');
 				$question = new ChoiceQuestion($table->render(),$destids,-1);
 				$id = $helper->ask($input, $output, $question); // $id is one based so that zero appears as invalid answer (0 = carriage return)
-				$output->writeln("<question>Setting allowlist destination to ". $destmodname . "->" . $destnames[$id][1] ." = " . $destnames[$id][2] ."</question>");
+				$output->writeln(sprintf(_("<question>Setting allowlist destination to %s->%s = %s</question>"), $destmodname, $destnames[$id][1], $destnames[$id][2]));
 				$allowlist->destinationSet($destnames[$id][2]);
 			} else {
-				$output->writeln("<question>Setting allowlist destination to None.</question>");
+				$output->writeln(_("<question>Setting allowlist destination to None.</question>"));
 				$allowlist->astman->database_del('allowlist', 'dest');
 			}
 		}
@@ -208,11 +208,12 @@ class Allowlist extends Command {
 		if($input->getOption('delete')) {
 			$number = $input->getOption('delete');
 			if ($allowlist->numberDel($number)) {
-				$output->writeln("<question>deleted number: ". $number ."</question>");
+				$output->writeln(sprintf(_("<question>deleted number: %s</question>"), $number));
 			} else {
-				$output->writeln("<error>could not delete number: ". $number ."</error>");
+				$output->writeln(sprintf(_("<error>could not delete number: %s</error>"), $number));
 			}
 		}
+		
 		if(!$input->getOption('add') && !$input->getOption('delete') && !$input->getOption('list') && !$input->getOption('destination') && !$input->getOption('settings') && !$input->getOption('route')  && !$input->getOption('did') && !$input->getOption('import')  && !$input->getOption('export')) {
 			$this->outputHelp($input,$output);
 			exit(4);
@@ -221,7 +222,7 @@ class Allowlist extends Command {
 
 	private function addEntry($entry,$output) {
 		$allowlist = \FreePBX::create()->Allowlist;
-		$output->writeln("Add is not yet avaiable for '".$entry['number']."' coming soon!");
+		$output->writeln(sprintf(_("Add is not yet avaiable for '%s' coming soon!"), $entry['number']));
 	}
 
 	/**
@@ -258,12 +259,12 @@ class Allowlist extends Command {
 		$table->setHeaders(array(_('Setting'),_('Value')));
 		$rows = array();
 		$rows[] = array(
-			'allow cm/phonebook known callers',
-			$allowlist->allowknowncallersGet() == 0 ? 'No' : 'Yes'
+			_('allow cm/phonebook known callers'),
+			$allowlist->allowknowncallersGet() == 0 ? _('No') : _('Yes')
 		);
 		$rows[] = array(
-			'pause allowlist processing',
-			$allowlist->pauseGet() == 0 ? 'No' : 'Yes'
+			_('pause allowlist processing'),
+			$allowlist->pauseGet() == 0 ? _('No') : _('Yes')
 		);
 		$table->setRows($rows);
 		return $table;
@@ -275,7 +276,7 @@ class Allowlist extends Command {
 		$table->setHeaders(array(_('Option'),_('Value')));
 		$rows = array();
 		$rows[] = array(
-			'destination for non allowed callers',
+			_('destination for non allowed callers'),
 			$allowlist->destinationGet()
 		);
 		$table->setRows($rows);
@@ -287,7 +288,7 @@ class Allowlist extends Command {
 	{
 		$dids = $this->listIncomingRoutes($allowlist);
 		$table = new Table($output);
-		$table->setHeaders(array('ID',_('DID'),_('CID'),_('Destination'), _('Description'),_('Checked')));
+		$table->setHeaders(array(_('ID'),_('DID'),_('CID'),_('Destination'), _('Description'),_('Checked')));
 		$table->setRows($dids);
 		return $table;
 	}	
@@ -297,7 +298,7 @@ class Allowlist extends Command {
 	{
 		$routes = $this->listOutgoingRoutes($allowlist);
 		$table = new Table($output);
-		$table->setHeaders(array('ID',_('Name'),_('Auto')));
+		$table->setHeaders(array(_('ID'),_('Name'),_('Auto')));
 		$table->setRows($routes);
 		return $table;
 	}	
@@ -315,7 +316,7 @@ class Allowlist extends Command {
 		// fill in the fake row numbers as route ids
 		foreach($gotRows as $id => $r){
 			$gotRows[$id]['routeid'] = $id + 1; // add one so that menu displays see carriage return (returns 0) as an invalid selection
-			$gotRows[$id]['checked'] = $allowlist->didIsSet($gotRows[$id]['extension'], $gotRows[$id]['cidnum']) == 1 ? "Yes" : "No";
+			$gotRows[$id]['checked'] = $allowlist->didIsSet($gotRows[$id]['extension'], $gotRows[$id]['cidnum']) == 1 ? _("Yes") : _("No");
 		}
 
 		return $gotRows;
@@ -333,7 +334,7 @@ class Allowlist extends Command {
 		}
 		// fill in the autoadd status 
 		foreach($gotRows as $id => $r){
-			$gotRows[$id]['checked'] = $allowlist->routeIsSet($gotRows[$id]['route_id']) == 1 ? "Yes" : "No";
+			$gotRows[$id]['checked'] = $allowlist->routeIsSet($gotRows[$id]['route_id']) == 1 ? _("Yes") : _("No");
 		}
 		return $gotRows;
 	}

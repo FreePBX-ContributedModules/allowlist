@@ -51,7 +51,6 @@ class Allowlist implements BMO
 
     public function ajaxHandler()
     {
-
         $request = $_REQUEST;
         if (!empty($_REQUEST['oldval']) && $_REQUEST['command'] == 'add')
         {
@@ -103,13 +102,13 @@ class Allowlist implements BMO
                 );
             break;
             case 'calllog':
-                $number = $request['number'];
-                $sql = sprintf('SELECT DISTINCT calldate FROM %s WHERE src = ?', $this->FreePBX->Cdr->getDbTable());
-                $cdrdbh =  $this->FreePBX->Cdr->getCdrDbHandle(); 
-                $stmt = $cdrdbh->prepare($sql);
-                $stmt->execute(array($number));
-                $ret = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-                return $ret;
+                $mod_cdr = $this->FreePBX->Cdr;
+				$number = $request['number'];
+				$sql = sprintf('SELECT DISTINCT calldate FROM %s WHERE src = ?', $mod_cdr->getDbTable());
+				$stmt = $mod_cdr->getCdrDbHandle()->prepare($sql);
+				$stmt->execute(array($number));
+				$ret = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+				return $ret;
             break;
             case 'getJSON':
                 switch ($request['jdata'])
@@ -121,7 +120,12 @@ class Allowlist implements BMO
                         {
                             $number = $item['number'];
                             $description = $item['description'];
-                            if ($number == 'dest' || $number == 'pause' || $number == 'knowncallers' || substr($number, 0, 7) == 'autoadd' || substr($number, 0, 3) == 'did')
+                            $array_continue = array(
+                                'dest',
+                                'pause',
+                                'knowncallers'
+                            );
+                            if ( in_array($number, $array_continue) || substr($number, 0, 7) == 'autoadd' || substr($number, 0, 3) == 'did')
                             {
                                 continue;
                             }
@@ -144,32 +148,32 @@ class Allowlist implements BMO
     public function install()
     {
         $fcc = new \featurecode('allowlist', 'allowlist_add');
-        $fcc->setDescription('Add a number to the allowlist');
-        $fcc->setHelpText('Adds a number to the Allowlist Module.  All calls from that number to the system will will be allowed to proceed normally.  Manage these in the Allowlist module.');
+        $fcc->setDescription(_('Add a number to the allowlist'));
+        $fcc->setHelpText(_('Adds a number to the Allowlist Module. All calls from that number to the system will will be allowed to proceed normally. Manage these in the Allowlist module.'));
         $fcc->setDefault('*38');
         $fcc->setProvideDest(true);
         $fcc->update();
         unset($fcc);
 
         $fcc = new \featurecode('allowlist', 'allowlist_remove');
-        $fcc->setDescription('Remove a number from the allowlist');
-        $fcc->setHelpText('Removes a number from the Allowlist Module');
+        $fcc->setDescription(_('Remove a number from the allowlist'));
+        $fcc->setHelpText(_('Removes a number from the Allowlist Module'));
         $fcc->setDefault('*39');
         $fcc->setProvideDest(true);
         $fcc->update();
         unset($fcc);
 
         $fcc = new \featurecode('allowlist', 'allowlist_last');
-        $fcc->setDescription('Add the last caller to the allowlist');
-        $fcc->setHelpText('Adds the last caller to the Allowlist Module.  All calls from that number to the system will be allowed to proceed normally.');
+        $fcc->setDescription(_('Add the last caller to the allowlist'));
+        $fcc->setHelpText(_('Adds the last caller to the Allowlist Module. All calls from that number to the system will be allowed to proceed normally.'));
         $fcc->setDefault('*40');
         $fcc->setProvideDest(true);
         $fcc->update();
         unset($fcc);
 
         $fcc = new \featurecode('allowlist', 'allowlist_pause_toggle');
-        $fcc->setDescription('Pause or unpause Allowlist checking');
-        $fcc->setHelpText('Temporarily pause or unpause the Allowlist module operation system wide');
+        $fcc->setDescription(_('Pause or unpause Allowlist checking'));
+        $fcc->setHelpText(_('Temporarily pause or unpause the Allowlist module operation system wide'));
         $fcc->setDefault('*41');
         $fcc->setProvideDest(true);
         $fcc->update();
@@ -291,7 +295,7 @@ class Allowlist implements BMO
         $fcc = new \featurecode($modulename, 'allowlist_last');
         $lastfc = $fcc->getCodeActive();
         unset($fcc);
-	//pause toggle
+	    //pause toggle
         $fcc = new \featurecode($modulename, 'allowlist_pause_toggle');
         $togglefc = $fcc->getCodeActive();
         unset($fcc);		
@@ -305,9 +309,9 @@ class Allowlist implements BMO
         $ext->add($id, $c, '', new \ext_gosubif('$[${DIALPLAN_EXISTS(app-allowlist-check-predial-hook,s,1)}]', 'app-allowlist-check-predial-hook,s,1'));
         $ext->add($id, $c, '', new \ext_gotoif('$["${callerallowed}"="1"]', 'returnto'));
 
-	// check pause time and exit if pause is enabled
+	    // check pause time and exit if pause is enabled
         $ext->add($id, $c, '', new \ext_gosub('app-allowlist-pause-check,s,1'));
-	$ext->add($id, $c, '', new \ext_gotoif('$["${DB_EXISTS(allowlist/pause)}"="1"]', 'returnto'));
+	    $ext->add($id, $c, '', new \ext_gotoif('$["${DB_EXISTS(allowlist/pause)}"="1"]', 'returnto'));
 
         $ext->add($id, $c, 'check-list', new \ext_gotoif('$["${DB_EXISTS(allowlist/${CALLERID(num)})}"="0"]', 'check-contacts'));
         $ext->add($id, $c, '', new \ext_setvar('CALLED_ALLOWLIST', '1'));
@@ -483,7 +487,7 @@ class Allowlist implements BMO
         {
             $ext->add('app-allowlist', $togglefc, '', new \ext_goto('1', 's', 'app-allowlist-pause-toggle'));
         }		
-	$id = 'app-allowlist-pause-toggle';
+	    $id = 'app-allowlist-pause-toggle';
         $c = 's';
         $ext->add($id, $c, '', new \ext_gosubif('$[${DB_EXISTS(allowlist/pause)}]', 'app-allowlist-pause-disable,s,1:app-allowlist-pause-enable,s,1'));
         $ext->add($id, $c, '', new \ext_answer());
@@ -495,21 +499,21 @@ class Allowlist implements BMO
         $ext->add($id, $c, 'unpaused', new \ext_playback('dictate/pause&disabled'));		
         $ext->add($id, $c, '', new \ext_hangup());
 		
-	$id = 'app-allowlist-pause-enable';
+	    $id = 'app-allowlist-pause-enable';
         $c = 's';
-	$ext->add($id, $c, '', new \ext_noop('Current time ${EPOCH}'));		
-	$ext->add($id, $c, '', new \ext_set('DB(allowlist/pause)', '${MATH(${EPOCH}+86400,int)}'));   // set timer 24 hr into future
+	    $ext->add($id, $c, '', new \ext_noop('Current time ${EPOCH}'));		
+	    $ext->add($id, $c, '', new \ext_set('DB(allowlist/pause)', '${MATH(${EPOCH}+86400,int)}'));   // set timer 24 hr into future
         $ext->add($id, $c, '', new \ext_return());
 		
-	$id = 'app-allowlist-pause-disable';
+	    $id = 'app-allowlist-pause-disable';
         $c = 's';
         $ext->add($id, $c, '', new \ext_dbdel('allowlist/pause'));		
         $ext->add($id, $c, '', new \ext_return());
 		
-	$id = 'app-allowlist-pause-check';
+	    $id = 'app-allowlist-pause-check';
         $c = 's';
-	$ext->add($id, $c, '', new \ext_noop('Current time ${EPOCH}'));
-	$ext->add($id, $c, '', new \ext_noop('Pause timer expire ${DB(allowlist/pause)}'));
+	    $ext->add($id, $c, '', new \ext_noop('Current time ${EPOCH}'));
+	    $ext->add($id, $c, '', new \ext_noop('Pause timer expire ${DB(allowlist/pause)}'));
         $ext->add($id, $c, '', new \ext_gosubif('$[${DB_EXISTS(allowlist/pause)} && "${DB(allowlist/pause)}"<"${EPOCH}"]', 'app-allowlist-pause-disable,s,1'));
         $ext->add($id, $c, '', new \ext_return());
     }
@@ -534,9 +538,9 @@ class Allowlist implements BMO
                         'value' => _('Submit') ,
                     ) ,
                 );
-
-                return $buttons;
+            break;
         }
+        return $buttons;
     }
 
     //Allowlist Methods
@@ -575,7 +579,12 @@ class Allowlist implements BMO
             $allowlisted = array();
             foreach ($list as $k => $v)
             {
-                if ($k == '/allowlist/dest' || $k == '/allowlist/pause' || $k == '/allowlist/knowncallers' || substr($k, 0, 18) == '/allowlist/autoadd' || substr($k, 0, 14) == '/allowlist/did')
+                $array_continue = array(
+                    '/allowlist/dest',
+                    '/allowlist/pause',
+                    '/allowlist/knowncallers'
+                );
+                if (in_array($k, $array_continue) || substr($k, 0, 18) == '/allowlist/autoadd' || substr($k, 0, 14) == '/allowlist/did')
                 {
                     continue;
                 }
@@ -589,7 +598,7 @@ class Allowlist implements BMO
         }
         else
         {
-            throw new RuntimeException('Cannot connect to Asterisk Manager, is Asterisk running?');
+            throw new RuntimeException(_('Cannot connect to Asterisk Manager, is Asterisk running?'));
         }
     }
 
@@ -607,7 +616,7 @@ class Allowlist implements BMO
         }
         else
         {
-            throw new RuntimeException('Cannot connect to Asterisk Manager, is Asterisk running?');
+            throw new RuntimeException(_('Cannot connect to Asterisk Manager, is Asterisk running?'));
         }
         return $post['number'];
     }
@@ -625,7 +634,7 @@ class Allowlist implements BMO
         }
         else
         {
-            throw new RuntimeException('Cannot connect to Asterisk Manager, is Asterisk running?');
+            throw new RuntimeException(_('Cannot connect to Asterisk Manager, is Asterisk running?'));
         }
     }
 
@@ -638,13 +647,12 @@ class Allowlist implements BMO
     {
         if ($this->astman->connected())
         {
-           // $this->FreePBX->Blacklist->numberAdd($post);
             $this->FreePBX->Blacklist->numberAdd($post);
             return ($this->numberDel($post['number']));
         }
         else
         {
-            throw new RuntimeException('Cannot connect to Asterisk Manager, is Asterisk running?');
+            throw new RuntimeException(_('Cannot connect to Asterisk Manager, is Asterisk running?'));
         }
     }
 
@@ -669,7 +677,7 @@ class Allowlist implements BMO
         }
         else
         {
-            throw new RuntimeException('Cannot connect to Asterisk Manager, is Asterisk running?');
+            throw new RuntimeException(_('Cannot connect to Asterisk Manager, is Asterisk running?'));
         }
     }
 
@@ -685,7 +693,7 @@ class Allowlist implements BMO
         }
         else
         {
-            throw new RuntimeException('Cannot connect to Asterisk Manager, is Asterisk running?');
+            throw new RuntimeException(_('Cannot connect to Asterisk Manager, is Asterisk running?'));
         }
     }
 
@@ -709,7 +717,7 @@ class Allowlist implements BMO
         }
         else
         {
-            throw new RuntimeException('Cannot connect to Asterisk Manager, is Asterisk running?');
+            throw new RuntimeException(_('Cannot connect to Asterisk Manager, is Asterisk running?'));
         }
     }
 
@@ -725,7 +733,7 @@ class Allowlist implements BMO
         }
         else
         {
-            throw new RuntimeException('Cannot connect to Asterisk Manager, is Asterisk running?');
+            throw new RuntimeException(_('Cannot connect to Asterisk Manager, is Asterisk running?'));
         }
     }
 
@@ -748,7 +756,7 @@ class Allowlist implements BMO
         }
         else
         {
-            throw new RuntimeException('Cannot connect to Asterisk Manager, is Asterisk running?');
+            throw new RuntimeException(_('Cannot connect to Asterisk Manager, is Asterisk running?'));
         }
     }
 
@@ -856,7 +864,7 @@ class Allowlist implements BMO
         }
         else
         {
-            throw new RuntimeException('Cannot connect to Asterisk Manager, is Asterisk running?');
+            throw new RuntimeException(_('Cannot connect to Asterisk Manager, is Asterisk running?'));
         }
     }
 
@@ -870,7 +878,7 @@ class Allowlist implements BMO
         }
         else
         {
-            throw new RuntimeException('Cannot connect to Asterisk Manager, is Asterisk running?');
+            throw new RuntimeException(_('Cannot connect to Asterisk Manager, is Asterisk running?'));
         }
     }
 
@@ -891,7 +899,7 @@ class Allowlist implements BMO
         }
         else
         {
-            throw new RuntimeException('Cannot connect to Asterisk Manager, is Asterisk running?');
+            throw new RuntimeException(_('Cannot connect to Asterisk Manager, is Asterisk running?'));
         }
     }
 
@@ -903,7 +911,7 @@ class Allowlist implements BMO
         }
         else
         {
-            throw new RuntimeException('Cannot connect to Asterisk Manager, is Asterisk running?');
+            throw new RuntimeException(_('Cannot connect to Asterisk Manager, is Asterisk running?'));
         }
     }
 
@@ -915,7 +923,7 @@ class Allowlist implements BMO
         }
         else
         {
-            throw new RuntimeException('Cannot connect to Asterisk Manager, is Asterisk running?');
+            throw new RuntimeException(_('Cannot connect to Asterisk Manager, is Asterisk running?'));
         }
     }
 
@@ -935,7 +943,7 @@ class Allowlist implements BMO
         }
         else
         {
-            throw new RuntimeException('Cannot connect to Asterisk Manager, is Asterisk running?');
+            throw new RuntimeException(_('Cannot connect to Asterisk Manager, is Asterisk running?'));
         }
     }
 
