@@ -12,9 +12,9 @@
 	</description>
 	<changelog>
 		*15.0.9* Fixing FREEPBX-23071 
-                *15.0.8* Fix crash when outbound route exists but no trunks defined
-                *15.0.7* Fix issues with backup and restore not saving settings information
-                *15.0.6* Add sorting, feature code pause, transfer number to blacklist action
+        *15.0.8* Fix crash when outbound route exists but no trunks defined
+        *15.0.7* Fix issues with backup and restore not saving settings information
+        *15.0.6* Add sorting, feature code pause, transfer number to blacklist action
 		*15.0.5* Fix i18n files 
 		*15.0.4* Release/15.0 
 		*15.0.3* FREEPBX-FC-345 fix outroute splice failure if no outroutes defined 
@@ -31,6 +31,7 @@
 	</hooks>
 	<depends>
 		<module>core ge 15.0.12</module>
+		<module>cdr</module>
 	</depends>
 	<menuitems>
 		<allowlist needsenginedb="yes">Allowlist</allowlist>
@@ -38,11 +39,11 @@
  	<supported>
  		<version>15.0</version>
  	</supported>
-        <console>
-                <command>
-                        <name>allowlist</name>
-                </command>
-        </console>
+		<console>
+			<command>
+				<name>allowlist</name>
+			</command>
+		</console>
 	<database>
 	</database>
 </module>
