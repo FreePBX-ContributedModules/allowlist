@@ -1,4 +1,4 @@
-	<?php
+<?php
 //Namespace should be FreePBX\Console\Command
 namespace FreePBX\Console\Command;
 
