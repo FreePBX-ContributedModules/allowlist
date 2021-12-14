@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-29 03:55+0000\n"
+"POT-Creation-Date: 2021-12-14 04:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -149,7 +149,7 @@ msgstr ""
 msgid "Allowlist"
 msgstr ""
 
-#: functions.inc.php:61
+#: functions.inc.php:63
 msgid "Allowlist Called Numbers"
 msgstr ""
 
@@ -216,6 +216,8 @@ msgstr ""
 #: Allowlist.class.php:914
 #: Allowlist.class.php:926
 #: Allowlist.class.php:946
+#: Allowlist.class.php:966
+#: Allowlist.class.php:986
 msgid "Cannot connect to Asterisk Manager, is Asterisk running?"
 msgstr ""
 
@@ -262,7 +264,7 @@ msgstr ""
 msgid "Controls whether Allowlist screening is used on the Route."
 msgstr ""
 
-#: functions.inc.php:76
+#: functions.inc.php:94
 msgid ""
 "Controls whether to automatically add outbound callers on this Route to the "
 "Allowlist."
@@ -408,7 +410,7 @@ msgstr ""
 #: Console/Allowlist.class.php:319
 #: Console/Allowlist.class.php:337
 #: functions.inc.php:33
-#: functions.inc.php:68
+#: functions.inc.php:70
 #: views/general.php:63
 #: views/general.php:89
 #: assets/js/allowlist.js:77
@@ -428,6 +430,14 @@ msgstr ""
 #: assets/js/allowlist.js:89
 #, perl-format
 msgid "Number %s removed from the allowlist"
+msgstr ""
+
+#: functions.inc.php:103
+msgid "Number of digits to store"
+msgstr ""
+
+#: functions.inc.php:98
+msgid "Number of leading digits to remove"
 msgstr ""
 
 #: views/addnumber.php:18
@@ -565,7 +575,7 @@ msgstr ""
 #: Console/Allowlist.class.php:319
 #: Console/Allowlist.class.php:337
 #: functions.inc.php:31
-#: functions.inc.php:66
+#: functions.inc.php:68
 #: views/general.php:61
 #: views/general.php:87
 #: assets/js/allowlist.js:77
@@ -580,6 +590,14 @@ msgstr ""
 
 #: Console/Allowlist.class.php:279
 msgid "destination for non allowed callers"
+msgstr ""
+
+#: functions.inc.php:73
+msgid "digits to remove"
+msgstr ""
+
+#: functions.inc.php:80
+msgid "digits to store"
 msgstr ""
 
 #: Console/Allowlist.class.php:266

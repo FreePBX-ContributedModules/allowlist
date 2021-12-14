@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-29 03:55+0000\n"
+"POT-Creation-Date: 2021-12-14 04:36+0000\n"
 "PO-Revision-Date: 2021-11-28 20:06+0100\n"
 "Last-Translator: Javier Pastor <jpastor@cerebelum.net>\n"
 "Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
@@ -151,7 +151,7 @@ msgstr "Permitir la última persona que llama"
 msgid "Allowlist"
 msgstr "Lista de permitidos"
 
-#: functions.inc.php:61
+#: functions.inc.php:63
 msgid "Allowlist Called Numbers"
 msgstr ""
 
@@ -204,6 +204,7 @@ msgstr "Registro de Llamadas"
 #: Allowlist.class.php:720 Allowlist.class.php:736 Allowlist.class.php:759
 #: Allowlist.class.php:867 Allowlist.class.php:881 Allowlist.class.php:902
 #: Allowlist.class.php:914 Allowlist.class.php:926 Allowlist.class.php:946
+#: Allowlist.class.php:966 Allowlist.class.php:986
 msgid "Cannot connect to Asterisk Manager, is Asterisk running?"
 msgstr ""
 
@@ -249,7 +250,7 @@ msgstr "Cerrar"
 msgid "Controls whether Allowlist screening is used on the Route."
 msgstr ""
 
-#: functions.inc.php:76
+#: functions.inc.php:94
 msgid ""
 "Controls whether to automatically add outbound callers on this Route to the "
 "Allowlist."
@@ -380,7 +381,7 @@ msgstr ""
 
 #: Console/Allowlist.class.php:263 Console/Allowlist.class.php:267
 #: Console/Allowlist.class.php:319 Console/Allowlist.class.php:337
-#: functions.inc.php:33 functions.inc.php:68 views/general.php:63
+#: functions.inc.php:33 functions.inc.php:70 views/general.php:63
 #: views/general.php:89 assets/js/allowlist.js:77 assets/js/allowlist.js:103
 #: assets/js/allowlist.js:170
 msgid "No"
@@ -397,6 +398,14 @@ msgstr "Número"
 #: assets/js/allowlist.js:89
 #, perl-format
 msgid "Number %s removed from the allowlist"
+msgstr ""
+
+#: functions.inc.php:103
+msgid "Number of digits to store"
+msgstr ""
+
+#: functions.inc.php:98
+msgid "Number of leading digits to remove"
 msgstr ""
 
 #: views/addnumber.php:18
@@ -526,7 +535,7 @@ msgstr ""
 
 #: Console/Allowlist.class.php:263 Console/Allowlist.class.php:267
 #: Console/Allowlist.class.php:319 Console/Allowlist.class.php:337
-#: functions.inc.php:31 functions.inc.php:66 views/general.php:61
+#: functions.inc.php:31 functions.inc.php:68 views/general.php:61
 #: views/general.php:87 assets/js/allowlist.js:77 assets/js/allowlist.js:103
 #: assets/js/allowlist.js:170
 msgid "Yes"
@@ -538,6 +547,14 @@ msgstr ""
 
 #: Console/Allowlist.class.php:279
 msgid "destination for non allowed callers"
+msgstr ""
+
+#: functions.inc.php:73
+msgid "digits to remove"
+msgstr ""
+
+#: functions.inc.php:80
+msgid "digits to store"
 msgstr ""
 
 #: Console/Allowlist.class.php:266
