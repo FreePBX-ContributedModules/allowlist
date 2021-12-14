@@ -49,6 +49,8 @@ function allowlist_hook_core($viewing_itemid, $target_menuid) {
 
         case 'routing':
             $autoadd = allowlist_route_get($viewing_itemid);
+            $remcount = allowlist_route_remcount($viewing_itemid);
+            $stocount = allowlist_route_stocount($viewing_itemid);
             $html= '
                 <!--allowlist hook -->
                 <!--Automatically add Outbound Callers to Allowlist on Route-->
@@ -61,11 +63,27 @@ function allowlist_hook_core($viewing_itemid, $target_menuid) {
                                         <label class="control-label" for="autoadd_allowlist">'. _("Allowlist Called Numbers").'</label>
                                         <i class="fa fa-question-circle fpbx-help-icon" data-for="autoadd_allowlist"></i>
                                     </div>
-                                    <div class="col-md-9 radioset">
-                                        <input type="radio" name="autoadd_allowlist" id="autoadd_allowlist_yes" value="yes" '. ($autoadd?"CHECKED":"").'>
+                                    <div class="col-md-1 radioset">
+                                        <input type="radio" name="autoadd_allowlist" id="autoadd_allowlist_yes" value="yes" '. ($autoadd?"checked":"").'>
                                         <label for="autoadd_allowlist_yes">'. _("Yes").'</label>
-                                        <input type="radio" name="autoadd_allowlist" id="autoadd_allowlist_no" value="no" '. ($autoadd?"":"CHECKED").'>
+                                        <input type="radio" name="autoadd_allowlist" id="autoadd_allowlist_no" value="no" '. ($autoadd?"":"checked").'>
                                         <label for="autoadd_allowlist_no">'. _("No").'</label>
+                                    </div>
+                                    <div class="col-md-2 text-right">
+                                        <label class="control-label" for="leadigits">'. _("digits to remove").'</label>
+                                        <i class="fa fa-question-circle fpbx-help-icon" data-for="leadigits"></i>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input type="number" class="form-control" id="leadigits" name="remcount" value='. ($remcount != null?"$remcount":"0").'>
+                                    </div>
+                                    <div class="col-md-2 text-right">
+                                        <label class="control-label" for="stodigits">'. _("digits to store").'</label>
+                                        <i class="fa fa-question-circle fpbx-help-icon" data-for="stodigits"></i>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input type="number" class="form-control" id="stodigits" name="stocount" value='. ($stocount != null?"$stocount":"99").'>
+                                    </div>
+                                    <div class="col-md-2">
                                     </div>
                                 </div>
                             </div>
@@ -74,6 +92,16 @@ function allowlist_hook_core($viewing_itemid, $target_menuid) {
                     <div class="row">
                         <div class="col-md-12">
                             <span id="autoadd_allowlist-help" class="help-block fpbx-help-block">'. _("Controls whether to automatically add outbound callers on this Route to the Allowlist.").'</span>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span id="leadigits-help" class="help-block fpbx-help-block">'. _("Number of leading digits to remove").'</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span id="stodigits-help" class="help-block fpbx-help-block">'. _("Number of digits to store").'</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -118,7 +146,7 @@ function allowlist_hookProcess_core($viewing_itemid, $request) {
             break;
         case 'addroute':
             if ($request['autoadd_allowlist'] == 'yes') {
-                $allowlist->routeAdd($request['id']);
+                $allowlist->routeAdd($request['id'], $request['remcount'], $request['stocount']);
             }
             break;
         case 'delroute':
@@ -127,7 +155,7 @@ function allowlist_hookProcess_core($viewing_itemid, $request) {
         case 'editroute':                 // deleting and adding as in core module - ensures changes are updated for the route
             $allowlist->routeDelete($request['id']);
             if ($request['autoadd_allowlist'] == 'yes') {
-                $allowlist->routeAdd($request['id']);
+                $allowlist->routeAdd($request['id'], $request['remcount'], $request['stocount']);
             }
             break;
         }
@@ -198,4 +226,12 @@ function allowlist_did_get($did) {
 
 function allowlist_route_get($route_id) {
     return FreePBX::Allowlist()->routeIsSet($route_id);
+}
+
+function allowlist_route_remcount($route_id) {
+        return FreePBX::Allowlist()->routeRemCount($route_id);
+}
+
+function allowlist_route_stocount($route_id) {
+        return FreePBX::Allowlist()->routeStoCount($route_id);
 }

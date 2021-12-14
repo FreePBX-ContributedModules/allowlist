@@ -2,7 +2,7 @@
 	<rawname>allowlist</rawname>
 	<repo>unsupported</repo>
 	<name>Allow List</name>
-	<version>15.0.10</version>
+	<version>15.0.11</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
@@ -11,6 +11,7 @@
 		This module is used to manage a system wide list of allowlisted callers.
 	</description>
 	<changelog>
+		*15.0.11* FREEPBX-23118 - Add options to trim leading digits and limit number of stored digits on autoadd
 		*15.0.10* FREEPBX-23083 - Replace ajax.php with ajaxurl
 		*15.0.9* Fixing FREEPBX-23071 
 		*15.0.8* Fix crash when outbound route exists but no trunks defined
