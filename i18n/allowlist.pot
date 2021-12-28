@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-14 04:36+0000\n"
+"POT-Creation-Date: 2021-12-28 05:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,14 +118,6 @@ msgid ""
 "the system will be allowed to proceed normally."
 msgstr ""
 
-#: allowlist.i18n.php:6
-msgid "Admin"
-msgstr ""
-
-#: allowlist.i18n.php:4
-msgid "Allow List"
-msgstr ""
-
 #: views/algrid.php:3
 msgid "Allow Number"
 msgstr ""
@@ -144,7 +136,6 @@ msgstr ""
 
 #: Allowlist.class.php:27
 #: Allowlist.class.php:784
-#: allowlist.i18n.php:10
 #: views/general.php:24
 msgid "Allowlist"
 msgstr ""
@@ -553,11 +544,6 @@ msgstr ""
 
 #: views/general.php:44
 msgid "This functionality is now part of the Bulk Handler Module"
-msgstr ""
-
-#: allowlist.i18n.php:8
-msgid ""
-"This module is used to manage a system wide list of allowlisted callers."
 msgstr ""
 
 #: Api/Gql/Allowlist.php:75

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-14 04:36+0000\n"
+"POT-Creation-Date: 2021-12-28 05:54+0000\n"
 "PO-Revision-Date: 2021-11-28 20:06+0100\n"
 "Last-Translator: Javier Pastor <jpastor@cerebelum.net>\n"
 "Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
@@ -122,14 +122,6 @@ msgstr ""
 "Agrega la última persona que llama al módulo Lista de permitidos.  Todas las "
 "llamadas desde ese número al sistema podrán proceder con normalidad."
 
-#: allowlist.i18n.php:6
-msgid "Admin"
-msgstr "Admin"
-
-#: allowlist.i18n.php:4
-msgid "Allow List"
-msgstr ""
-
 #: views/algrid.php:3
 msgid "Allow Number"
 msgstr "Permitir Número"
@@ -146,8 +138,7 @@ msgstr ""
 msgid "Allow the last caller"
 msgstr "Permitir la última persona que llama"
 
-#: Allowlist.class.php:27 Allowlist.class.php:784 allowlist.i18n.php:10
-#: views/general.php:24
+#: Allowlist.class.php:27 Allowlist.class.php:784 views/general.php:24
 msgid "Allowlist"
 msgstr "Lista de permitidos"
 
@@ -520,11 +511,6 @@ msgstr "Se ha producido un error al cargar el archivo"
 msgid "This functionality is now part of the Bulk Handler Module"
 msgstr "Esta funcionalidad forma parte ahora del Manejador a Granel"
 
-#: allowlist.i18n.php:8
-msgid ""
-"This module is used to manage a system wide list of allowlisted callers."
-msgstr ""
-
 #: Api/Gql/Allowlist.php:75 Api/Gql/Allowlist.php:130
 msgid "Used to manage a system wide list of allowed callers"
 msgstr ""
@@ -560,6 +546,9 @@ msgstr ""
 #: Console/Allowlist.class.php:266
 msgid "pause allowlist processing"
 msgstr ""
+
+#~ msgid "Admin"
+#~ msgstr "Admin"
 
 #~ msgid "Block Unknown/Blocked Caller ID"
 #~ msgstr "Bloquear Desconocido/Bloqueado identificador de llamadas"
