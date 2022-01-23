@@ -2,7 +2,7 @@
 	<rawname>allowlist</rawname>
 	<repo>unsupported</repo>
 	<name>Allow List</name>
-	<version>16.0.1</version>
+	<version>16.0.2</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
@@ -11,6 +11,7 @@
 		This module is used to manage a system wide list of allowlisted callers.
 	</description>
 	<changelog>
+		*16.0.2* Fix for splicing into wrong location in dial plan placing it before the blacklist checking
 		*16.0.1* Initial 16.0 release
 	</changelog>
 	<hooks>
