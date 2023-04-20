@@ -20,7 +20,11 @@ function searchContactManager ($number) {
 	// Is Contact Manager enabled and active?
 	try {
 		$AGI->verbose("Searching all Contact Mgr groups for $number");	
-		$search=$FreePBX->Contactmanager->getNamebyNumber($number);    
+		$grouplist = $FreePBX->Contactmanager->getGroups();
+		foreach ($grouplist as $group) {
+			$groupids[]=$group['id'];
+		}
+		$search=$FreePBX->Contactmanager->getNamebyNumber($number, $groupids);    
 		if (strlen($search['id'])!=0) {	// dialed number is in contact manager
 		// contact found
 			$found = true;
