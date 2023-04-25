@@ -208,9 +208,7 @@ function allowlist_hookGet_config($engine) {
                 $context = "macro-dialout-trunk";
                 $exten = "s";
                 $splice_position = 0;
-
-                $ext->splice($context, $exten, 'gocall', new ext_gotoif('$["${DB_EXISTS(allowlist/autoadd/${ROUTEID})}" = "0"]', 'gocall'),"",$splice_position);
-                $ext->splice($context, $exten, 'gocall', new ext_agi('allowlist-autoadd.agi'),"",$splice_position);
+				$ext->splice($context, $exten, 'gocall', new ext_execif('$[${DB_EXISTS(allowlist/autoadd/${ROUTEID})}]', 'AGI', 'allowlist-autoadd.agi,'));
             }
             break;
     }
