@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-24 00:49-0400\n"
+"POT-Creation-Date: 2024-05-24 02:13-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,7 +66,7 @@ msgstr ""
 msgid "Add a new number to the allowlist"
 msgstr ""
 
-#: Allowlist.class.php:151
+#: Allowlist.class.php:152
 msgid "Add a number to the allowlist"
 msgstr ""
 
@@ -79,7 +79,7 @@ msgstr ""
 msgid "Add or replace entry"
 msgstr ""
 
-#: Allowlist.class.php:167
+#: Allowlist.class.php:168
 msgid "Add the last caller to the allowlist"
 msgstr ""
 
@@ -92,27 +92,27 @@ msgstr ""
 msgid "Adding..."
 msgstr ""
 
-#: Allowlist.class.php:28
+#: Allowlist.class.php:29
 msgid ""
 "Adds a number to the Allowlist Module.  All calls from that number to the "
 "system will be allowed to proceed normally.  Manage these in the Allowlist "
 "module."
 msgstr ""
 
-#: Allowlist.class.php:152
+#: Allowlist.class.php:153
 msgid ""
 "Adds a number to the Allowlist Module. All calls from that number to the "
 "system will will be allowed to proceed normally. Manage these in the "
 "Allowlist module."
 msgstr ""
 
-#: Allowlist.class.php:30
+#: Allowlist.class.php:31
 msgid ""
 "Adds the last caller to the Allowlist Module.  All calls from that number to "
 "the system will be allowed to proceed normally."
 msgstr ""
 
-#: Allowlist.class.php:168
+#: Allowlist.class.php:169
 msgid ""
 "Adds the last caller to the Allowlist Module. All calls from that number to "
 "the system will be allowed to proceed normally."
@@ -126,16 +126,16 @@ msgstr ""
 msgid "Allow Phonebook and CM Callers"
 msgstr ""
 
-#: Allowlist.class.php:24
+#: Allowlist.class.php:25
 msgid "Allow a number"
 msgstr ""
 
-#: Allowlist.class.php:26
+#: Allowlist.class.php:27
 msgid "Allow the last caller"
 msgstr ""
 
-#: Allowlist.class.php:27
-#: Allowlist.class.php:784
+#: Allowlist.class.php:28
+#: Allowlist.class.php:785
 #: views/general.php:24
 msgid "Allowlist"
 msgstr ""
@@ -192,23 +192,23 @@ msgstr ""
 msgid "Call Log"
 msgstr ""
 
-#: Allowlist.class.php:601
-#: Allowlist.class.php:619
-#: Allowlist.class.php:637
-#: Allowlist.class.php:655
-#: Allowlist.class.php:680
-#: Allowlist.class.php:696
-#: Allowlist.class.php:720
-#: Allowlist.class.php:736
-#: Allowlist.class.php:759
-#: Allowlist.class.php:867
-#: Allowlist.class.php:881
-#: Allowlist.class.php:902
-#: Allowlist.class.php:914
-#: Allowlist.class.php:926
-#: Allowlist.class.php:946
-#: Allowlist.class.php:966
-#: Allowlist.class.php:986
+#: Allowlist.class.php:602
+#: Allowlist.class.php:620
+#: Allowlist.class.php:638
+#: Allowlist.class.php:656
+#: Allowlist.class.php:681
+#: Allowlist.class.php:697
+#: Allowlist.class.php:721
+#: Allowlist.class.php:737
+#: Allowlist.class.php:760
+#: Allowlist.class.php:868
+#: Allowlist.class.php:882
+#: Allowlist.class.php:903
+#: Allowlist.class.php:915
+#: Allowlist.class.php:927
+#: Allowlist.class.php:947
+#: Allowlist.class.php:967
+#: Allowlist.class.php:987
 msgid "Cannot connect to Asterisk Manager, is Asterisk running?"
 msgstr ""
 
@@ -261,7 +261,7 @@ msgid ""
 "Allowlist."
 msgstr ""
 
-#: Allowlist.class.php:242
+#: Allowlist.class.php:243
 msgid "Could not find file after upload"
 msgstr ""
 
@@ -284,7 +284,7 @@ msgstr ""
 msgid "Delete a number from the allow list"
 msgstr ""
 
-#: Allowlist.class.php:802
+#: Allowlist.class.php:803
 #: Console/Allowlist.class.php:130
 #: Console/Allowlist.class.php:145
 #: Console/Allowlist.class.php:291
@@ -293,7 +293,7 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: Allowlist.class.php:803
+#: Allowlist.class.php:804
 msgid "Description of number allowlisted"
 msgstr ""
 
@@ -376,7 +376,7 @@ msgstr ""
 msgid "Import/Export"
 msgstr ""
 
-#: Allowlist.class.php:785
+#: Allowlist.class.php:786
 msgid "Import/Export Caller Allowlist"
 msgstr ""
 
@@ -410,7 +410,7 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: Allowlist.class.php:270
+#: Allowlist.class.php:271
 msgid "No Entries to export"
 msgstr ""
 
@@ -439,7 +439,7 @@ msgstr ""
 msgid "Number/CallerID cannot be blank"
 msgstr ""
 
-#: Allowlist.class.php:83
+#: Allowlist.class.php:84
 msgid "Numbers Deleted"
 msgstr ""
 
@@ -455,7 +455,7 @@ msgstr ""
 msgid "Pause or Unpause Allowlist Checking Globally"
 msgstr ""
 
-#: Allowlist.class.php:175
+#: Allowlist.class.php:176
 msgid "Pause or unpause Allowlist checking"
 msgstr ""
 
@@ -463,26 +463,26 @@ msgstr ""
 msgid "Pause or unpause allowlist processing globally"
 msgstr ""
 
-#: Allowlist.class.php:797
+#: Allowlist.class.php:798
 msgid "Phone Number"
 msgstr ""
 
-#: Allowlist.class.php:829
+#: Allowlist.class.php:830
 msgid "Phone Number Required"
 msgstr ""
 
-#: Allowlist.class.php:25
-#: Allowlist.class.php:159
+#: Allowlist.class.php:26
+#: Allowlist.class.php:160
 #: Api/Gql/Allowlist.php:45
 msgid "Remove a number from the allowlist"
 msgstr ""
 
-#: Allowlist.class.php:29
-#: Allowlist.class.php:160
+#: Allowlist.class.php:30
+#: Allowlist.class.php:161
 msgid "Removes a number from the Allowlist Module"
 msgstr ""
 
-#: Allowlist.class.php:532
+#: Allowlist.class.php:533
 msgid "Reset"
 msgstr ""
 
@@ -510,15 +510,15 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: Allowlist.class.php:538
+#: Allowlist.class.php:539
 msgid "Submit"
 msgstr ""
 
-#: Allowlist.class.php:238
+#: Allowlist.class.php:239
 msgid "Sucessfully imported all entries"
 msgstr ""
 
-#: Allowlist.class.php:176
+#: Allowlist.class.php:177
 msgid "Temporarily pause or unpause the Allowlist module operation system wide"
 msgstr ""
 
@@ -526,11 +526,11 @@ msgstr ""
 msgid "The ID"
 msgstr ""
 
-#: Allowlist.class.php:247
+#: Allowlist.class.php:248
 msgid "The file must be in CSV format!"
 msgstr ""
 
-#: Allowlist.class.php:798
+#: Allowlist.class.php:799
 msgid "The number as it appears in the callerid display"
 msgstr ""
 
@@ -538,7 +538,7 @@ msgstr ""
 msgid "The number to allow"
 msgstr ""
 
-#: Allowlist.class.php:213
+#: Allowlist.class.php:214
 msgid "There was an error uploading the file"
 msgstr ""
 

@@ -7,6 +7,7 @@ namespace FreePBX\modules;
 use BMO;
 use RuntimeException;
 
+#[\AllowDynamicProperties]
 class Allowlist implements BMO
 {
 
