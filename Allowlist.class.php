@@ -789,10 +789,10 @@ class Allowlist implements BMO
     }
     public function bulkhandlerGetHeaders($type)
     {
+        $headers = array();
         switch ($type)
         {
             case 'allowlist':
-                $headers = array();
                 $headers['number'] = array(
                     'required' => true,
                     'identifier' => _("Phone Number") ,
