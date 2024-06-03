@@ -2,7 +2,7 @@
 	<rawname>allowlist</rawname>
 	<repo>unsupported</repo>
 	<name>Allow List</name>
-	<version>17.0.1</version>
+	<version>17.0.1.1</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
@@ -11,7 +11,7 @@
 		This module is used to manage a system wide list of allowlisted callers.
 	</description>
 	<changelog>
-		*17.0.1* Initial 17.0 release
+		*17.0.1.1*  17.0 release
 	</changelog>
 	<hooks>
 		<bulkhandler class="Bulkhandler" namespace="FreePBX\modules">
